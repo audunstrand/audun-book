@@ -3,7 +3,7 @@ var _ = require('lodash');
 var books = [];
 
 module.exports = {
-    findAll:  () => {
+    findAll:  function () {
         return Promise.resolve(books);
     },
     stockUp:  function (isbn, count)  {
