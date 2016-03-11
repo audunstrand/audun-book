@@ -1,7 +1,7 @@
 module.exports = function (stockRepository) {
 
     return {
-        stockUp: (req, res, next) => {
+        stockUp: function (req, res, next) {
             var isbn = req.body.isbn;
             var count = req.body.count;
 
@@ -11,14 +11,14 @@ module.exports = function (stockRepository) {
 
             res.json({isbn: isbn, count: count});
         },
-        findAll:  (req, res, next) =>{
+        findAll:  function (req, res, next) {
             stockRepository.findAll().
                 then(function (docs) {
                     res.json(docs);
                 }).
                 catch(next);
         },
-        getCount: (req, res) => {
+        getCount: function (req, res)  {
             stockRepository.getCount(req.params.isbn).then(function (result) {
                 if (result !== null) {
                     res.status(200).json({count: result});
