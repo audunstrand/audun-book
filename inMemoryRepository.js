@@ -3,10 +3,10 @@ var _ = require('lodash');
 var books = [];
 
 module.exports = {
-    findAll:  function () {
+    findAll: function () {
         return Promise.resolve(books);
     },
-    stockUp:  function (isbn, count)  {
+    stockUp: function (isbn, count) {
         var item = this._findItem(isbn);
         if (item) {
             item.count = count;
@@ -15,12 +15,12 @@ module.exports = {
         }
         return Promise.resolve();
     },
-    _findItem:  function (isbn)   {
+    _findItem: function (isbn) {
         return _.find(books, function (book) {
             return book.isbn === isbn;
         });
     },
-    getCount: function  (isbn) {
+    getCount: function (isbn) {
         var item = this._findItem(isbn);
         if (item) {
             return Promise.resolve(item.count);

@@ -10,6 +10,7 @@ var collectionPromise = MongoClient.
 
 module.exports = {
     stockUp: function (isbn, count) {
+        console.log("audun er best books")
         return collectionPromise.
             then(function (collection) {
                 collection.updateOne({isbn: isbn}, {
